@@ -155,6 +155,7 @@
 "Schedule": {
   "month": "{month}",
   "reserve": "Rezerviraj",
+  "active": "Aktiven",
   "selectDay": "Izberi dan za prikaz vadb",
   "noSessions": "Za ta dan ni vadb",
   "started": "preteklo",

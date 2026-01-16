@@ -145,6 +145,7 @@
 "Schedule": {
   "month": "{month}",
   "reserve": "Reserve",
+  "active": "Active",
   "selectDay": "Select a day to view classes",
   "noSessions": "No classes on this day",
   "capacity": "Cap: {count}/{total}",

@@ -108,6 +108,19 @@ async function confirmReserve() {
           })}
         </div>
 
+        {/* BOOKING STATUS */}
+{bookingStatus === 'waiting' && (
+  <div className="inline-flex items-center gap-2 text-sm text-yellow-700 bg-yellow-100 px-2 py-1 rounded-md w-fit">
+    ⏳ {t('waiting')}
+  </div>
+)}
+
+{bookingStatus === 'active' && (
+  <div className="inline-flex items-center gap-2 text-sm text-green-700 bg-green-100 px-2 py-1 rounded-md w-fit">
+    🟢 {t('active')}
+  </div>
+)}
+
         {/* CTA */}
    <button
   disabled={
