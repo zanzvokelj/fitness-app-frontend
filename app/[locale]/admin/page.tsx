@@ -8,6 +8,7 @@ import BookingsView from '@/app/components/views/BookingsView';
 import TicketsView from '@/app/components/views/TicketsView';
 import CentersView from '@/app/components/views/CentersView';
 import ClassesView from '@/app/components/views/ClassesView';
+import DashboardView from '@/app/components/views/DashboardView';
 
 
 export type AdminView =
@@ -34,7 +35,7 @@ export default function AdminPage() {
       <main className="flex-1 p-8 bg-gray-50">
         {view === 'dashboard' && (
           <div className="text-gray-400">
-            Dashboard coming soon
+          {view === 'dashboard' && <DashboardView />}
           </div>
         )}
 
