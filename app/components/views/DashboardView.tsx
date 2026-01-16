@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, ReactNode } from 'react';
-import { checkIsAdmin, fetchAdminStats } from '@/lib/api/admin';
+import { fetchAdminStats } from '@/lib/api/admin';
 import type { AdminStats } from '@/lib/api/admin';
 
 import {
@@ -20,28 +20,16 @@ const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export default function DashboardView() {
   const [data, setData] = useState<AdminStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [forbidden, setForbidden] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function load() {
       try {
-        const token = localStorage.getItem('access_token');
-        if (!token) {
-          setForbidden(true);
-          return;
-        }
-
-        const isAdmin = await checkIsAdmin();
-        if (!isAdmin) {
-          setForbidden(true);
-          return;
-        }
-
         const stats = await fetchAdminStats();
         setData(stats);
       } catch (err) {
-        console.error('Dashboard load failed', err);
-        setForbidden(true);
+        console.error('Failed to load admin stats', err);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -54,17 +42,15 @@ export default function DashboardView() {
     return <div className="text-gray-400">Loading dashboard…</div>;
   }
 
-  if (forbidden) {
+  if (error) {
     return (
       <div className="text-red-500">
-        You do not have access to admin dashboard.
+        Failed to load dashboard data.
       </div>
     );
   }
 
-  if (!data) {
-    return null;
-  }
+  if (!data) return null;
 
   return (
     <div className="space-y-8">
