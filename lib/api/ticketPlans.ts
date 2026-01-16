@@ -13,13 +13,14 @@ export function fetchTicketPlans(): Promise<TicketPlan[]> {
 }
 
 export function createCheckout(planId: number): Promise<{ url: string }> {
-  return apiRequest<{ url: string }>(
-    `/api/v1/orders/checkout?plan_id=${planId}`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      },
-    }
-  );
+  return apiRequest<{ url: string }>('/api/v1/orders/checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+    },
+    body: JSON.stringify({
+      plan_id: planId,
+    }),
+  });
 }
