@@ -39,7 +39,30 @@ export default function CartPage() {
       <h1 className="text-2xl font-bold mb-6">
         {t('title')}
       </h1>
+<div className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
+  <div className="font-semibold mb-1">
+    🧪 Demo purchase
+  </div>
 
+  <p className="mb-2">
+    This is a demo environment. No real payment will be made.
+  </p>
+
+  <ul className="space-y-1">
+    <li>
+      <strong>Email:</strong> use any random email
+    </li>
+    <li>
+      <strong>Card number:</strong> 4242 4242 4242 4242
+    </li>
+    <li>
+      <strong>Expiry:</strong> 12 / 34
+    </li>
+    <li>
+      <strong>CVC:</strong> 123
+    </li>
+  </ul>
+</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {plans.map(plan => (
           <div
