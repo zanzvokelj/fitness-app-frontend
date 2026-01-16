@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, ReactNode } from 'react';
-import { fetchAdminStats } from '@/lib/api/admin';
+import { checkIsAdmin, fetchAdminStats } from '@/lib/api/admin';
 import type { AdminStats } from '@/lib/api/admin';
 
 import {
@@ -20,10 +20,17 @@ const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export default function DashboardView() {
   const [data, setData] = useState<AdminStats | null>(null);
 
-  useEffect(() => {
-    fetchAdminStats().then(setData);
-  }, []);
+useEffect(() => {
+  async function load() {
+    const isAdmin = await checkIsAdmin();
+    if (!isAdmin) return;
 
+    const stats = await fetchAdminStats();
+    setData(stats);
+  }
+
+  load();
+}, []);
   if (!data) {
     return <div className="text-gray-400">Loading dashboard…</div>;
   }

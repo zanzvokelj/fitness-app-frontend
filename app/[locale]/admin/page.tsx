@@ -11,6 +11,7 @@ import ClassesView from '@/app/components/views/ClassesView';
 import DashboardView from '@/app/components/views/DashboardView';
 
 
+
 export type AdminView =
   | 'dashboard'
   | 'users'
