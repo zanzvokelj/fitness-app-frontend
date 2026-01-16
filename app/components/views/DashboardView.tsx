@@ -19,20 +19,51 @@ const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export default function DashboardView() {
   const [data, setData] = useState<AdminStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [forbidden, setForbidden] = useState(false);
 
-useEffect(() => {
-  async function load() {
-    const isAdmin = await checkIsAdmin();
-    if (!isAdmin) return;
+  useEffect(() => {
+    async function load() {
+      try {
+        const token = localStorage.getItem('access_token');
+        if (!token) {
+          setForbidden(true);
+          return;
+        }
 
-    const stats = await fetchAdminStats();
-    setData(stats);
+        const isAdmin = await checkIsAdmin();
+        if (!isAdmin) {
+          setForbidden(true);
+          return;
+        }
+
+        const stats = await fetchAdminStats();
+        setData(stats);
+      } catch (err) {
+        console.error('Dashboard load failed', err);
+        setForbidden(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, []);
+
+  if (loading) {
+    return <div className="text-gray-400">Loading dashboard…</div>;
   }
 
-  load();
-}, []);
+  if (forbidden) {
+    return (
+      <div className="text-red-500">
+        You do not have access to admin dashboard.
+      </div>
+    );
+  }
+
   if (!data) {
-    return <div className="text-gray-400">Loading dashboard…</div>;
+    return null;
   }
 
   return (
@@ -52,11 +83,7 @@ useEffect(() => {
             <XAxis dataKey="day" />
             <YAxis />
             <Tooltip />
-            <Line
-              dataKey="count"
-              stroke="#2563eb"
-              strokeWidth={2}
-            />
+            <Line dataKey="count" stroke="#2563eb" strokeWidth={2} />
           </LineChart>
         </ChartCard>
 

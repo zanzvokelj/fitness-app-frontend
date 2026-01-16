@@ -34,11 +34,7 @@ export default function AdminPage() {
 
       {/* MAIN CONTENT */}
       <main className="flex-1 p-8 bg-gray-50">
-        {view === 'dashboard' && (
-          <div className="text-gray-400">
-          {view === 'dashboard' && <DashboardView />}
-          </div>
-        )}
+{view === 'dashboard' && <DashboardView />}
 
         {view === 'users' && <UsersView />}
 
