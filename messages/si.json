@@ -1,0 +1,282 @@
+
+{
+  "Common": {
+    "login": "Prijava",
+    "logout": "Odjava",
+    "home": "Domov",
+    "admin": "Admin",
+
+    "profile": "Moj profil",
+    "cart": "Nakup",
+    "schedule": "Urnik",
+    "changeCenter": "Menjava centra"
+  },
+  "Home": {
+    "title": "Dobrodošli",
+    "subtitle": "Sistem za rezervacijo vadb"
+  },
+  "Main": {
+  "login": "Prijavi se",
+  "newUser": "Nov uporabnik",
+  "selectCenter": "Izberi center",
+  "cta": "Nadaljuj",
+  "alert": "Za rezervacije, nakup in vstop, je potrebna prijava. Če ste nov uporabnik portala se morate pred prvo uporabo registrirati kot nov uporabnik!"
+},
+"Register": {
+  "title": "Ustvari račun",
+  "subtitle": "Registracija za dostop do sistema",
+  "email": "E-pošta",
+  "password": "Geslo",
+  "passwordRepeat": "Ponovi geslo",
+  "submit": "Registracija",
+  "haveAccount": "Že imaš račun?",
+  "login": "Prijava",
+  "back": "Nazaj",
+  "passwordsDoNotMatch": "Gesli se ne ujemata"
+},
+"Login": {
+    "title": "Dobrodošli nazaj",
+    "subtitle": "Prijavite se v svoj račun",
+    "email": "E-pošta",
+    "password": "Geslo",
+    "submit": "Prijava",
+    "back": "Nazaj",
+
+    "errors": {
+      "invalidCredentials": "Napačna e-pošta ali geslo.",
+      "userNotFound": "Uporabnik s tem e-poštnim naslovom ne obstaja.",
+      "network": "Prišlo je do napake. Poskusite znova.",
+      "required": "Izpolnite vsa polja."
+    }
+  },
+ "Centers": {
+  "title": "Izberi center",
+  "select": "Izberi",
+  "loading": "Nalagam centre …",
+  "errors": {
+    "loadFailed": "Centrov ni bilo mogoče naložiti."
+  }
+},
+"admin": {
+  "sidebar": {
+    "title": "Admin",
+    "dashboard": "Nadzorna plošča",
+    "users": "Uporabniki",
+    "tickets": "Karte",
+    "sessions": "Termini",
+    "bookings": "Rezervacije"
+  },
+
+  "users": {
+    "title": "Uporabniki",
+    "selectUser": "Izberi uporabnika",
+    "role": "Vloga",
+    "status": "Status",
+    "active": "Aktiven",
+    "disabled": "Onemogočen",
+    "search": "Išči po e-pošti …",
+    "noResults": "Ni zadetkov"
+  },
+
+  "userDetail": {
+    "tickets": "Karte",
+    "noTickets": "Uporabnik nima kart",
+    "valid": "Velja",
+    "active": "Aktivna",
+    "inactive": "Neaktivna",
+    "assignTicket": "Dodeli karto",
+    "changeRole": "Spremeni vlogo",
+    "deactivateUser": "Deaktiviraj uporabnika",
+    "deactivateTicket": "Deaktiviraj karto",
+     "confirmDeactivate": "Ali si prepričan, da želiš deaktivirati uporabnika?",
+      "userDeactivated": "Uporabnik je deaktiviran",
+      "roleChanged": "Vloga uporabnika posodobljena",
+       "saveRole": "Shrani vlogo",
+  "roleUser": "Uporabnik",
+  "roleAdmin": "Administrator"
+  },
+
+  "assignTicket": {
+    "title": "Dodeli karto",
+    "plan": "Tip karte",
+    "selectPlan": "Izberi karto",
+    "cancel": "Prekliči",
+    "confirm": "Dodeli",
+    "assigning": "Dodeljujem …"
+  },
+
+ "sessions": {
+  "title": "Termini",
+  "addSession": "Dodaj termin",
+  "editSession": "Uredi termin",
+  "noSessions": "Ni razpisanih terminov",
+  "allClasses": "Vsi termini",
+
+  "center": "Center",
+  "classType": "Tip vadbe",
+  "startTime": "Začetek",
+  "capacity": "Kapaciteta",
+  "status": "Status",
+  "select": "Izberi",
+  "showPast": "Prikazi pretekle",
+  "active": "Aktiven",
+  "cancelled": "Preklican",
+
+  "save": "Shrani",
+  "cancel": "Prekliči",
+
+  "saveCapacity": "Shrani kapaciteto",
+  "cancelSession": "Prekliči termin",
+  "confirmCancel": "Ali si prepričan, da želiš preklicati termin?",
+  "selectClass": "Izberi tip vadbe",
+"create": "Ustvari termin",
+
+  "delete": "Prekliči termin",
+  "confirmDelete": "Ali si prepričan, da želiš preklicati termin?"
+}
+},
+
+"bookings": {
+  "title": "Rezervacije",
+  "noBookings": "Ni rezervacij",
+  "select": "Izberi rezervacijo",
+  "clearDate": "Izbrisi datum",
+
+  "active": "Aktivna",
+  "waiting": "Čakalna vrsta",
+  "cancelled": "Preklicana",
+  "myBookings": "Moje rezervacije",
+
+  "cancel": "Prekliči rezervacijo",
+  "confirmCancel": "Ali si prepričan, da želiš preklicati rezervacijo?",
+   "searchEmail": "Išči po e-pošti …",
+  "allStatuses": "Vsi statusi"
+},
+"Schedule": {
+  "month": "{month}",
+  "reserve": "Rezerviraj",
+  "selectDay": "Izberi dan za prikaz vadb",
+  "noSessions": "Za ta dan ni vadb",
+  "started": "preteklo",
+  "cancel": "Odjava",
+  "cancelLocked": "Odjava ni več možna",
+   "noTicketTitle": "Nimate aktivne karte",
+    "noTicketDescription": "Nimate aktivne karte. Nakup lahko opravite preko spleta ali se oglasite na recepciji izbranega centra.",
+    "goToShop": "Nakup karte",
+   "confirmReserve": "Želite dodati rezervacijo?",
+  "confirmCancel": "Želite preklicati rezervacijo?",
+  "confirm": "Potrdi rezervacijo",
+  "capacity": "št.: {count}/{total}",
+  "reserved": "Rezervirano",
+  "waiting": "Čakalna vrsta",
+  "noTicket": "Nimate veljavne karte. Nakup karte je možen preko spleta ali na recepciji izbranega centra.",
+  "full": "Vadba je polna",
+  "bookingError": "Prišlo je do napake pri rezervaciji",
+  "days": {
+    "0": "Ned",
+    "1": "Pon",
+    "2": "Tor",
+    "3": "Sre",
+    "4": "Čet",
+    "5": "Pet",
+    "6": "Sob"
+  }
+},
+"Ticket": {
+  "title": "Karte",
+
+  "validUntil": "Velja do",
+  "noTicket": "Ni aktivne karte",
+
+  "unlimited": "Neomejeno obiskov",
+  "remainingEntries": "Preostalo {count} obiskov",
+
+  "totalSold": "Prodane karte",
+  "active": "Aktivne",
+  "revenue": "Prihodek",
+
+  "filters": {
+    "email": "Išči po e-pošti …",
+    "allPlans": "Vse karte",
+    "allStatuses": "Vsi statusi",
+    "statusActive": "Aktivna",
+    "statusInactive": "Neaktivna",
+    "fromDate": "Od",
+    "toDate": "Do"
+  },
+
+  "table": {
+    "user": "Uporabnik",
+    "plan": "Karta",
+    "validUntil": "Veljavnost",
+    "entries": "Obiski",
+    "status": "Status"
+  },
+
+  "status": {
+    "active": "Aktivna",
+    "inactive": "Neaktivna"
+  },
+
+  "loading": "Nalagam karte …"
+},
+  "Cart": {
+    "title": "Izberi karto",
+    "buy": "Kupi",
+    "unlimited": "Neomejeno",
+    "entries": "{count} obiskov",
+    "validDays": "Velja {days} dni",
+    "loading": "Nalagam ponudbo …"
+},
+ "Profile": {
+    "title": "Profil in pogoji",
+    "firstName": "Ime",
+    "lastName": "Priimek",
+    "birthDate": "Dan rojstva",
+    "gender": "Spol",
+    "male": "Moški",
+    "female": "Ženska",
+    "address": "Naslov",
+    "postalCode": "Pošta",
+    "phone": "GSM",
+    "email": "Email",
+    "next": "Naprej"
+  },
+
+  "Success": {
+  "title": "Nakup uspešen 🎉",
+  "subtitle": "Tvoja karta je aktivna in pripravljena za uporabo.",
+  "order": "Številka naročila",
+  "cta": "Nadaljuj"
+},
+
+
+  "AdminCenters": {
+    "title": "Centri",
+    "newPlaceholder": "Ime novega centra",
+    "add": "Dodaj",
+    "edit": "Uredi",
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "deactivate": "Deaktiviraj",
+    "confirmDeactivate": "Ali želiš deaktivirati ta center?",
+    "active": "Aktiven",
+    "inactive": "Neaktiven"
+  },
+  "AdminClasses": {
+    "title": "Vadbe",
+    "name": "Ime vadbe",
+    "add": "Dodaj",
+    "edit": "Uredi",
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "deactivate": "Deaktiviraj",
+    "confirmDeactivate": "Ali želiš deaktivirati to vadbo?",
+    "active": "Aktivna",
+    "durationLabel": "Trajanje",
+    "inactive": "Neaktivna",
+    "duration": "{min} min"
+  }
+}
+
+

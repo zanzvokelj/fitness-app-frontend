@@ -1,0 +1,270 @@
+{
+  "Common": {
+    "login": "Login",
+    "logout": "Logout",
+    "home": "Home",
+    "admin": "Admin",
+
+    "profile": "My profile",
+    "cart": "Purchase",
+    "schedule": "Schedule",
+    "changeCenter": "Change center"
+  },
+  "Home": {
+    "title": "Welcome",
+    "subtitle": "Fitness booking system"
+  },
+  "Main": {
+    "login": "Log in",
+    "newUser": "New user",
+    "selectCenter": "Select center",
+    "cta": "Continue",
+    "alert": "To make reservations, purchases and access services, you must be logged in. If you are a new user, you must register before your first use!"
+  },
+  "Register": {
+  "title": "Create account",
+  "subtitle": "Register to access the booking system",
+  "email": "Email",
+  "password": "Password",
+  "passwordRepeat": "Repeat password",
+  "submit": "Register",
+  "haveAccount": "Already have an account?",
+  "login": "Login",
+  "back": "Back",
+  "passwordsDoNotMatch": "Passwords do not match"
+},
+
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to your account",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "back": "Back",
+    "errors": {
+      "invalidCredentials": "Incorrect email or password.",
+      "userNotFound": "User with this email does not exist.",
+      "network": "Something went wrong. Please try again.",
+      "required": "Please fill in all fields."
+    }
+  },
+"Centers": {
+  "title": "Select a center",
+  "select": "Select",
+  "loading": "Loading centers…",
+  "errors": {
+    "loadFailed": "Failed to load centers."
+  }
+},
+"admin": {
+  "users": {
+    "title": "Users",
+    "selectUser": "Select a user",
+    "role": "Role",
+    "status": "Status",
+    "active": "Active",
+    "disabled": "Disabled",
+    "search": "Search by email…",
+    "noResults": "No results"
+  },
+
+  "userDetail": {
+    "tickets": "Tickets",
+    "noTickets": "User has no tickets",
+    "valid": "Valid",
+    "active": "Active",
+    "inactive": "Inactive",
+    "assignTicket": "Assign ticket",
+    "changeRole": "Change role",
+    "deactivateUser": "Deactivate user",
+    "deactivateTicket": "Deactivate ticket",
+    "confirmDeactivate": "Are you sure you want to deactivate this user?",
+      "userDeactivated": "User has been deactivated",
+      "roleChanged": "User role updated",
+       "saveRole": "Save role",
+  "roleUser": "User",
+  "roleAdmin": "Admin"
+  },
+
+  "assignTicket": {
+    "title": "Assign ticket",
+    "plan": "Ticket plan",
+    "selectPlan": "Select ticket",
+    "cancel": "Cancel",
+    "confirm": "Assign",
+    "assigning": "Assigning…"
+  },
+
+   "sessions": {
+  "title": "Sessions",
+  "addSession": "Add session",
+  "editSession": "Edit session",
+  "noSessions": "No sessions found",
+  "allClasses": "All classes",
+  "showPast": "Show past",
+  "center": "Center",
+  "classType": "Class type",
+  "startTime": "Start time",
+  "capacity": "Capacity",
+  "status": "Status",
+  "select": "Select",
+  "selectClass": "Select class type",
+"create": "Create session",
+
+  "active": "Active",
+  "cancelled": "Cancelled",
+
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "saveCapacity": "Save capacity",
+  "cancelSession": "Cancel session",
+  "confirmCancel": "Are you sure you want to cancel this session?",
+
+  "delete": "Cancel session",
+  "confirmDelete": "Are you sure you want to cancel this session?"
+}
+},
+
+"bookings": {
+  "title": "Bookings",
+  "noBookings": "No bookings",
+  "select": "Select a booking",
+  "myBookings": "My bookings",
+  "clearDate": "Clear date",
+
+  "active": "Active",
+  "waiting": "Waiting list",
+  "cancelled": "Cancelled",
+
+  "cancel": "Cancel booking",
+  "confirmCancel": "Are you sure you want to cancel this booking?",
+   "searchEmail": "Search by email…",
+  "allStatuses": "All statuses"
+},
+"Schedule": {
+  "month": "{month}",
+  "reserve": "Reserve",
+  "selectDay": "Select a day to view classes",
+  "noSessions": "No classes on this day",
+  "capacity": "Cap: {count}/{total}",
+  "started": "expired",
+    "noTicketTitle": "No active ticket",
+    "noTicketDescription": "You do not have an active ticket. You can purchase one online or visit the reception of the selected center.",
+    "goToShop": "Buy ticket",
+  "cancel": "Cancel",
+  "reserved": "Reserved",
+  "cancelLocked": "Cancellation no longer possible",
+    "confirmReserve": "Do you want to confirm this reservation?",
+  "confirmCancel": "Do you want to cancel this reservation?",
+  "confirm": "Confirm reservation",
+  "waiting": "Waiting list",
+  "noTicket": "You do not have a valid ticket. Tickets can be purchased online or at the reception.",
+  "full": "Session is full",
+  "bookingError": "Booking failed",
+  "days": {
+    "0": "Sun",
+    "1": "Mon",
+    "2": "Tue",
+    "3": "Wed",
+    "4": "Thu",
+    "5": "Fri",
+    "6": "Sat"
+  }
+},
+ "Ticket": {
+  "title": "Tickets",
+
+  "validUntil": "Valid until",
+  "noTicket": "No active ticket",
+
+  "unlimited": "Unlimited visits",
+  "remainingEntries": "{count} visits left",
+
+  "totalSold": "Tickets sold",
+  "active": "Active tickets",
+  "revenue": "Revenue",
+
+  "filters": {
+    "email": "Search by email…",
+    "allPlans": "All plans",
+    "allStatuses": "All statuses",
+    "statusActive": "Active",
+    "statusInactive": "Inactive",
+    "fromDate": "From",
+    "toDate": "To"
+  },
+
+  "table": {
+    "user": "User",
+    "plan": "Plan",
+    "validUntil": "Valid until",
+    "entries": "Entries",
+    "status": "Status"
+  },
+
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+
+  "loading": "Loading tickets…"
+},
+  "Cart": {
+    "title": "Choose a plan",
+    "buy": "Buy",
+    "unlimited": "Unlimited",
+    "entries": "{count} entries",
+    "validDays": "Valid for {days} days",
+    "loading": "Loading offers…"
+},
+ "Profile": {
+    "title": "Profile and terms",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "birthDate": "Date of birth",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "address": "Address",
+    "postalCode": "Postal code",
+    "phone": "Phone",
+    "email": "Email",
+    "next": "Next"
+  },
+
+  "Success": {
+  "title": "Purchase successful 🎉",
+  "subtitle": "Your ticket is now active and ready to use.",
+  "order": "Order number",
+  "cta": "Continue"
+},
+
+"AdminCenters": {
+  "title": "Centers",
+  "newPlaceholder": "New center name",
+  "add": "Add",
+  "edit": "Edit",
+  "save": "Save",
+  "cancel": "Cancel",
+  "deactivate": "Deactivate",
+  "confirmDeactivate": "Deactivate this center?",
+  "active": "Active",
+  "inactive": "Inactive"
+},
+"AdminClasses": {
+  "title": "Classes",
+  "name": "Class name",
+  "add": "Add",
+  "edit": "Edit",
+  "save": "Save",
+  "cancel": "Cancel",
+  "deactivate": "Deactivate",
+  "confirmDeactivate": "Deactivate this class?",
+  "active": "Active",
+  "inactive": "Inactive",
+  "durationLabel": "Duration",
+  "duration": "{min} min"
+}
+
+}
