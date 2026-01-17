@@ -128,3 +128,34 @@ Deployment
 	•	Backend: Render
 	•	Frontend: Vercel
 	•	Database: PostgreSQL
+
+
+  Security Highlights
+	•	Password hashing
+	•	JWT expiration and refresh logic
+	•	Token reuse prevention
+	•	Webhook signature verification
+	•	Admin-only route enforcement
+
+⸻
+
+🧠 Design Decisions
+	•	Soft-delete (is_active) instead of hard deletes for data integrity
+	•	Business-logic-driven booking state machine
+	•	Stripe webhooks used as source of truth for payments
+	•	Clear separation between user-facing and admin APIs
+	•	Backend-first architecture with frontend as a thin client
+
+
+Future Improvements
+	•	Pagination for admin lists
+	•	Email notifications for bookings and cancellations
+	•	Audit log for admin actions
+	•	Background task processing
+
+
+
+
+ Author
+
+Built as a real-world portfolio project to demonstrate backend and full-stack engineering skills.
