@@ -47,6 +47,7 @@ async function login(email: string, password: string) {
 function logout() {
   localStorage.removeItem('access_token');
   localStorage.removeItem('refresh_token');
+  localStorage.removeItem('ai_chat_messages');
   setAccessToken(null);
 }
 
