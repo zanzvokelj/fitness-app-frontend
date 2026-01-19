@@ -1,15 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { sendAiChatMessage, ChatMessage } from '@/lib/api/aiChat';
-import ChatBubble from './ChatMessage';
+import { sendAiChat, AiChatMessage } from '@/lib/api/ai';
 
 export default function AiChat() {
-  const [messages, setMessages] = useState<ChatMessage[]>([
+  const [messages, setMessages] = useState<AiChatMessage[]>([
     {
       role: 'assistant',
       content:
-        'Živjo! Sem tvoj AI fitness trener. Kako ti lahko danes pomagam?',
+        'Živjo 👋 Sem tvoj AI fitnes trener. Kaj je tvoj cilj?',
     },
   ]);
 
@@ -17,9 +16,9 @@ export default function AiChat() {
   const [loading, setLoading] = useState(false);
 
   async function sendMessage() {
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
 
-    const newMessages: ChatMessage[] = [
+    const newMessages: AiChatMessage[] = [
       ...messages,
       { role: 'user', content: input },
     ];
@@ -29,7 +28,7 @@ export default function AiChat() {
     setLoading(true);
 
     try {
-      const res = await sendAiChatMessage(newMessages.slice(-10)); // 🔒 limit context
+      const res = await sendAiChat(newMessages);
 
       setMessages([
         ...newMessages,
@@ -41,7 +40,7 @@ export default function AiChat() {
         {
           role: 'assistant',
           content:
-            'Prišlo je do napake. Poskusi znova čez trenutek.',
+            'Prišlo je do napake 😕 Poskusi ponovno.',
         },
       ]);
     } finally {
@@ -50,32 +49,53 @@ export default function AiChat() {
   }
 
   return (
-    <div className="rounded-xl border p-4 space-y-4">
-      <h2 className="font-semibold">🤖 AI Fitness Chat</h2>
+    <div className="rounded-xl border p-4 flex flex-col h-125]">
+      <h2 className="text-lg font-semibold mb-2">
+        🤖 AI Fitness Coach
+      </h2>
 
-      <div className="h-80 overflow-y-auto space-y-2">
+      {/* CHAT */}
+      <div className="flex-1 overflow-y-auto space-y-3 mb-3">
         {messages.map((m, i) => (
-          <ChatBubble key={i} {...m} />
+          <div
+            key={i}
+            className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
+              m.role === 'user'
+                ? 'bg-blue-600 text-white ml-auto'
+                : 'bg-gray-100 text-gray-800'
+            }`}
+          >
+            {m.content}
+          </div>
         ))}
+
         {loading && (
-          <ChatBubble
-            role="assistant"
-            content="Razmišljam…"
-          />
+          <div className="text-sm text-gray-400">
+            AI razmišlja…
+          </div>
         )}
       </div>
 
+      {/* INPUT */}
       <div className="flex gap-2">
-        <input
+        <textarea
           value={input}
           onChange={e => setInput(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && sendMessage()}
-          className="flex-1 border rounded px-3 py-2"
-          placeholder="Vprašaj trenerja…"
+          rows={2}
+          placeholder="Npr. Rad bi shujšal in treniral 3x na teden"
+          className="flex-1 border rounded px-3 py-2 text-sm resize-none"
+          onKeyDown={e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              sendMessage();
+            }
+          }}
         />
+
         <button
           onClick={sendMessage}
-          className="px-4 py-2 bg-blue-600 text-white rounded"
+          disabled={loading}
+          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
         >
           Pošlji
         </button>

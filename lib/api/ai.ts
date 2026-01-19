@@ -26,6 +26,30 @@ export type AiRecommendationResponse = {
   ai_explanation: string;
 };
 
+export type AiChatMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+export type AiChatResponse = {
+  reply: string;
+};
+
+export function sendAiChat(
+  messages: AiChatMessage[]
+): Promise<AiChatResponse> {
+  return apiRequest<AiChatResponse>(
+    '/api/v1/ai/chat',
+    {
+      method: 'POST',
+      body: JSON.stringify({ messages }),
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    }
+  );
+}
+
 export function getAiRecommendation(
   payload: AiRecommendationRequest
 ): Promise<AiRecommendationResponse> {
