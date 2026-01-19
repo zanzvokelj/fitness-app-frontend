@@ -3,9 +3,6 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-/* --------------------------------------------
- * Dynamic imports (client-only components)
- * -------------------------------------------- */
 const TicketBanner = dynamic(
   () => import('@/app/components/tickets/TicketBanner'),
   { ssr: false }
@@ -16,29 +13,26 @@ const ActiveBookingsList = dynamic(
   { ssr: false }
 );
 
-const AiFitnessCoach = dynamic(
-  () => import('@/app/components/aiFitnessCoach'),
+const AiChat = dynamic(
+  () => import('@/app/components/aiChat'),
   { ssr: false }
 );
 
-/* --------------------------------------------
- * Dashboard Page
- * -------------------------------------------- */
 export default function DashboardPage() {
-  const [refreshTicket, setRefreshTicket] = useState<number>(0);
+  const [refreshTicket, setRefreshTicket] = useState(0);
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-6 space-y-8">
-      {/* 🎟️ Ticket status / upsell */}
+      {/* 🎟️ Ticket status */}
       <TicketBanner refreshKey={refreshTicket} />
 
-      {/* 🤖 AI Fitness Assistant */}
-      <AiFitnessCoach />
+      {/* 🤖 AI FITNESS CHAT */}
+      <AiChat />
 
       {/* 📅 Active bookings */}
       <ActiveBookingsList
         onBookingChange={() =>
-          setRefreshTicket(prev => prev + 1)
+          setRefreshTicket(v => v + 1)
         }
       />
     </main>
