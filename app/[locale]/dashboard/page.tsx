@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { fetchActiveTicket, Ticket } from '@/lib/api/tickets';
+import { useCenter } from '@/app/providers/CenterProvider';
 
 const TicketBanner = dynamic(
   () => import('@/app/components/tickets/TicketBanner'),
@@ -20,19 +21,22 @@ const AiChat = dynamic(
 );
 
 export default function DashboardPage() {
+  const { selectedCenter } = useCenter();
   const [refreshTicket, setRefreshTicket] = useState(0);
   const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
 
   useEffect(() => {
-    fetchActiveTicket(1).then(setActiveTicket);
-  }, [refreshTicket]);
+    if (!selectedCenter) return;
+
+    fetchActiveTicket(selectedCenter.id).then(setActiveTicket);
+  }, [selectedCenter, refreshTicket]);
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-6 space-y-8">
       <TicketBanner refreshKey={refreshTicket} />
 
-      {/* 🤖 AI CHAT – samo če obstaja aktivna karta za center 1 */}
-      {activeTicket && <AiChat />}
+      {/* 🤖 AI CHAT – samo za center 1 + aktivna karta */}
+      {selectedCenter?.id === 1 && activeTicket && <AiChat />}
 
       <ActiveBookingsList
         onBookingChange={() => setRefreshTicket(v => v + 1)}
