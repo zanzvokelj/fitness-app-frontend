@@ -1,20 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sendAiChat, AiChatMessage } from '@/lib/api/ai';
 
-export default function AiChat() {
-  const [messages, setMessages] = useState<AiChatMessage[]>([
-    {
-      role: 'assistant',
-      content:
-        'Živjo 👋 Sem tvoj AI fitnes trener. Kaj je tvoj cilj?',
-    },
-  ]);
+const STORAGE_KEY = 'ai_chat_messages';
 
+export default function AiChat() {
+  const [messages, setMessages] = useState<AiChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
+  /* -------------------------------------------------
+   * Load chat from localStorage on mount
+   * ------------------------------------------------- */
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+
+    if (stored) {
+      try {
+        setMessages(JSON.parse(stored));
+        return;
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+
+    // default welcome message
+    setMessages([
+      {
+        role: 'assistant',
+        content:
+          'Živjo 👋 Sem tvoj AI fitnes trener. Kaj je tvoj cilj?',
+      },
+    ]);
+  }, []);
+
+  /* -------------------------------------------------
+   * Persist chat to localStorage
+   * ------------------------------------------------- */
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(messages)
+      );
+    }
+  }, [messages]);
+
+  /* -------------------------------------------------
+   * Send message
+   * ------------------------------------------------- */
   async function sendMessage() {
     if (!input.trim() || loading) return;
 
