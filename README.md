@@ -1,6 +1,6 @@
 Fitness Booking Platform
 
-Production-ready full-stack fitness booking system with advanced backend business logic, role-based access control, real-time capacity management, and payment integration.
+Production-ready full-stack fitness booking system with advanced backend business logic, role-based access control, real-time capacity management, payment integration, and an AI-powered fitness assistant.
 
 This project was built as a real-world portfolio application to demonstrate backend and full-stack engineering skills beyond basic CRUD systems.
 
@@ -15,11 +15,12 @@ Initial requests may take up to ~1 minute while the server wakes up.
 🧠 Project Overview
 
 The platform models a real group fitness business:
-	•	Users can purchase tickets and book class sessions
-	•	Sessions have limited capacity and waiting lists
+	•	Users purchase tickets and book group class sessions
+	•	Sessions have limited capacity and automatic waiting lists
 	•	Tickets have validity windows and usage limits
-	•	Admins manage sessions, users, tickets, and view analytics
+	•	Admins manage users, sessions, tickets, and analytics
 	•	Payments are handled via Stripe with webhook verification
+	•	An AI fitness assistant helps users choose suitable group classes based on the real schedule
 
 The system is backend-first: the frontend acts as a thin client on top of a robust API.
 
@@ -31,6 +32,8 @@ The system is backend-first: the frontend acts as a thin client on top of a robu
 	•	JWT authentication (access + refresh tokens)
 	•	Secure password hashing
 	•	Token rotation & invalidation
+	•	Brute-force protection on authentication endpoints
+	•	Centralized error handling for consistent API responses
 	•	Role-based access control (User / Admin)
 	•	Admin-only API endpoints
 
@@ -40,18 +43,29 @@ The system is backend-first: the frontend acts as a thin client on top of a robu
 	•	Paid ticket plans (Stripe integration)
 	•	Limited-entry and unlimited tickets
 	•	Validity windows (valid_from / valid_until)
-	•	Automatic ticket activation after payment webhook
+	•	Automatic ticket activation via Stripe webhooks
 	•	Admin ticket assignment and manual adjustments
 
 ⸻
 
 📅 Session & Booking Management
-	•	Class sessions with capacity limits
+	•	Group class sessions with capacity limits
 	•	Real-time booking counters
 	•	Automatic waiting list when sessions are full
 	•	Cancellation cutoff before session start
-	•	Booking state machine (active, waiting, canceled)
-	•	Soft deletes for sessions and bookings
+	•	Explicit booking state machine (active, waiting, canceled)
+	•	Soft deletes for sessions and bookings (is_active)
+
+⸻
+
+🤖 AI Fitness Assistant
+	•	Conversational AI assistant integrated into the dashboard
+	•	Stateless backend with frontend-managed chat context
+	•	Uses real schedule data from the database
+	•	Advises only on available group classes and real time slots
+	•	Prevents hallucinated workouts, schedules, or prices
+	•	Center-aware: can be enabled per fitness center
+	•	Designed for low cost and predictable usage
 
 ⸻
 
@@ -65,15 +79,22 @@ The system is backend-first: the frontend acts as a thin client on top of a robu
 ⸻
 
 📊 Analytics & Statistics
-	•	Aggregated KPIs:
-	•	total users
-	•	active tickets
-	•	active bookings
-	•	revenue
+
+Aggregated KPIs:
+	•	Total users
+	•	Active tickets
+	•	Active bookings
+	•	Revenue
 	•	Daily user registrations
 	•	Revenue by day
 	•	Bookings by weekday
 	•	Most popular classes by booking volume
+
+⸻
+
+✉️ Notifications
+	•	Email notifications for bookings and cancellations
+	•	Currently disabled in production due to free-tier infrastructure limitations
 
 ⸻
 
@@ -97,6 +118,7 @@ Backend
 	•	JWT (access & refresh tokens)
 	•	Stripe API
 	•	Pytest
+	•	OpenAI API (AI assistant)
 
 Frontend
 	•	Next.js (App Router)
@@ -116,23 +138,26 @@ Deployment
 	•	Secure password hashing
 	•	JWT expiration & refresh logic
 	•	Token reuse prevention
+	•	Brute-force protection on sensitive endpoints
 	•	Stripe webhook signature verification
+	•	Centralized error handling
 	•	Admin-only route enforcement
 
 ⸻
 
 🧠 Design Decisions
-	•	Soft deletes (is_active) instead of hard deletes for data integrity
+	•	Soft deletes instead of hard deletes for data integrity
 	•	Explicit booking state machine instead of boolean flags
-	•	Stripe webhooks used as the single source of truth for payments
-	•	Clear separation between user-facing and admin APIs
+	•	Stripe webhooks as the single source of truth for payments
 	•	Backend-first architecture with frontend as a thin client
+	•	AI assistant constrained by real database data to prevent hallucinations
+	•	Stateless AI backend for predictable cost and scalability
 
 ⸻
 
 🗺️ Future Improvements
-	•	Email notifications for bookings and cancellations
-	•	Background task processing (e.g. Celery)
+	•	Background task processing (e.g. Celery / Redis)
+	•	Email service provider integration
 	•	Audit logs for admin actions
 	•	Pagination for admin lists
 	•	Docker & docker-compose setup
