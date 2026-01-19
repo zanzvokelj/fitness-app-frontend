@@ -49,7 +49,7 @@ export default function AiChat() {
   }
 
   return (
-    <div className="rounded-xl border p-4 flex flex-col h-125]">
+    <div className="rounded-xl border p-4 flex flex-col h-125">
       <h2 className="text-lg font-semibold mb-2">
         🤖 AI Fitness Coach
       </h2>

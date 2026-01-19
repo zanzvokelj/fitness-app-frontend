@@ -49,19 +49,3 @@ export function sendAiChat(
     }
   );
 }
-
-export function getAiRecommendation(
-  payload: AiRecommendationRequest
-): Promise<AiRecommendationResponse> {
-  return apiRequest<AiRecommendationResponse>(
-    '/api/v1/ai/recommend',
-    {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  );
-}
