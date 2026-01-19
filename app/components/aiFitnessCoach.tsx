@@ -100,13 +100,13 @@ export default function AiFitnessCoach() {
         <div className="space-y-4">
           <div>
             <h3 className="font-medium">Priporočene vadbe</h3>
-            <ul className="list-disc pl-5">
-              {result.recommended_sessions.map((s, i) => (
-                <li key={i}>
-                  {s.class} – {s.date} ob {s.time}
-                </li>
-              ))}
-            </ul>
+           <ul className="space-y-1">
+  {result.recommended_sessions.map((s, i) => (
+    <li key={i}>
+      <strong>{s.day}</strong> – {s.class} ob {s.time}
+    </li>
+  ))}
+</ul>
           </div>
 
           {result.ticket_recommendation && (

@@ -8,6 +8,7 @@ export type AiRecommendationRequest = {
 };
 
 export type RecommendedSession = {
+  day: string;
   class: string;
   date: string;
   time: string;
