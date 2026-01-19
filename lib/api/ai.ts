@@ -45,6 +45,7 @@ export function sendAiChat(
       body: JSON.stringify({ messages }),
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Content-Type': 'application/json', 
       },
     }
   );
