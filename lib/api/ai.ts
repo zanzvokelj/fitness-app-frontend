@@ -36,6 +36,7 @@ export function getAiRecommendation(
       body: JSON.stringify(payload),
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Content-Type': 'application/json',
       },
     }
   );
