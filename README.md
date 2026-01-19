@@ -1,109 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-
 Fitness Booking Platform
 
-Production-ready full-stack fitness booking system with payments, session capacity management, waiting lists, and admin dashboards.
+Production-ready full-stack fitness booking system with advanced backend business logic, role-based access control, real-time capacity management, and payment integration.
 
-Live demo: https://fitness-app-frontend-rose.vercel.app
+This project was built as a real-world portfolio application to demonstrate backend and full-stack engineering skills beyond basic CRUD systems.
+
+🌍 Live demo:
+https://fitness-app-frontend-rose.vercel.app
+
+⚠️ Note: Backend runs on free-tier infrastructure.
+Initial requests may take up to ~1 minute while the server wakes up.
 
 ⸻
 
-🚀 Features
+🧠 Project Overview
+
+The platform models a real group fitness business:
+	•	Users can purchase tickets and book class sessions
+	•	Sessions have limited capacity and waiting lists
+	•	Tickets have validity windows and usage limits
+	•	Admins manage sessions, users, tickets, and view analytics
+	•	Payments are handled via Stripe with webhook verification
+
+The system is backend-first: the frontend acts as a thin client on top of a robust API.
+
+⸻
+
+🚀 Core Features
 
 👤 Authentication & Authorization
-	•	JWT authentication with access & refresh tokens
-	•	Secure token rotation and refresh token invalidation
+	•	JWT authentication (access + refresh tokens)
+	•	Secure password hashing
+	•	Token rotation & invalidation
 	•	Role-based access control (User / Admin)
-	•	Protected routes and admin-only endpoints
+	•	Admin-only API endpoints
 
 ⸻
 
 🎟 Ticket System
-	•	Paid ticket plans with Stripe integration
-	•	Limited and unlimited entry tickets
+	•	Paid ticket plans (Stripe integration)
+	•	Limited-entry and unlimited tickets
 	•	Validity windows (valid_from / valid_until)
-	•	Automatic ticket activation after successful payment
+	•	Automatic ticket activation after payment webhook
 	•	Admin ticket assignment and manual adjustments
 
 ⸻
 
 📅 Session & Booking Management
 	•	Class sessions with capacity limits
-	•	Real-time booking counts
+	•	Real-time booking counters
 	•	Automatic waiting list when sessions are full
-	•	Cancellation cutoff logic before session start
-	•	Status-based bookings (active, waiting)
-	•	Soft-deleted sessions instead of hard deletes
+	•	Cancellation cutoff before session start
+	•	Booking state machine (active, waiting, canceled)
+	•	Soft deletes for sessions and bookings
 
 ⸻
 
-🛠 Admin Dashboard
+🛠 Admin Dashboard (Backend-heavy)
 	•	User management with ticket status filters
 	•	Session creation, capacity updates, and cancellation
 	•	Booking overview with advanced filtering
-	•	Ticket management and history per user
+	•	Ticket management and per-user ticket history
 	•	Revenue and usage analytics
-	•	KPI dashboard with charts:
-	•	User registrations
-	•	Revenue trends
-	•	Bookings by weekday
-	•	Most popular classes
 
 ⸻
 
 📊 Analytics & Statistics
-	•	Aggregated KPIs (users, active tickets, bookings, revenue)
+	•	Aggregated KPIs:
+	•	total users
+	•	active tickets
+	•	active bookings
+	•	revenue
 	•	Daily user registrations
 	•	Revenue by day
 	•	Bookings by weekday
-	•	Popular classes by booking volume
+	•	Most popular classes by booking volume
 
 ⸻
 
 🧪 Testing
-	•	Pytest-based integration tests
+	•	Pytest-based test suite
 	•	Isolated PostgreSQL test database
 	•	Transaction rollback per test
-	•	Authentication and token lifecycle tests
-	•	Admin privilege escalation tests
-	•	Booking flow setup fixtures
+	•	Authentication & token lifecycle tests
+	•	Booking flow and capacity validation tests
+	•	Admin authorization tests
 
 ⸻
 
@@ -113,15 +93,16 @@ Backend
 	•	FastAPI
 	•	PostgreSQL
 	•	SQLAlchemy
-	•	Stripe API
+	•	Alembic
 	•	JWT (access & refresh tokens)
+	•	Stripe API
 	•	Pytest
 
 Frontend
 	•	Next.js (App Router)
 	•	TypeScript
-	•	Recharts
 	•	Tailwind CSS
+	•	Recharts
 	•	next-intl (i18n)
 
 Deployment
@@ -129,33 +110,35 @@ Deployment
 	•	Frontend: Vercel
 	•	Database: PostgreSQL
 
+⸻
 
-  Security Highlights
-	•	Password hashing
-	•	JWT expiration and refresh logic
+🔐 Security Highlights
+	•	Secure password hashing
+	•	JWT expiration & refresh logic
 	•	Token reuse prevention
-	•	Webhook signature verification
+	•	Stripe webhook signature verification
 	•	Admin-only route enforcement
 
 ⸻
 
 🧠 Design Decisions
-	•	Soft-delete (is_active) instead of hard deletes for data integrity
-	•	Business-logic-driven booking state machine
-	•	Stripe webhooks used as source of truth for payments
+	•	Soft deletes (is_active) instead of hard deletes for data integrity
+	•	Explicit booking state machine instead of boolean flags
+	•	Stripe webhooks used as the single source of truth for payments
 	•	Clear separation between user-facing and admin APIs
 	•	Backend-first architecture with frontend as a thin client
 
+⸻
 
-Future Improvements
-	•	Pagination for admin lists
+🗺️ Future Improvements
 	•	Email notifications for bookings and cancellations
-	•	Audit log for admin actions
-	•	Background task processing
+	•	Background task processing (e.g. Celery)
+	•	Audit logs for admin actions
+	•	Pagination for admin lists
+	•	Docker & docker-compose setup
 
+⸻
 
+👤 Author
 
-
- Author
-
-Built as a real-world portfolio project to demonstrate backend and full-stack engineering skills.
+Built as a real-world portfolio project to demonstrate backend and full-stack engineering skills, production thinking, and domain-driven API design.
