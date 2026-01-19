@@ -1,7 +1,8 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { fetchActiveTicket, Ticket } from '@/lib/api/tickets';
 
 const TicketBanner = dynamic(
   () => import('@/app/components/tickets/TicketBanner'),
@@ -20,20 +21,21 @@ const AiChat = dynamic(
 
 export default function DashboardPage() {
   const [refreshTicket, setRefreshTicket] = useState(0);
+  const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
+
+  useEffect(() => {
+    fetchActiveTicket(1).then(setActiveTicket);
+  }, [refreshTicket]);
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-6 space-y-8">
-      {/* 🎟️ Ticket status */}
       <TicketBanner refreshKey={refreshTicket} />
 
-      {/* 🤖 AI FITNESS CHAT */}
-      <AiChat />
+      {/* 🤖 AI CHAT – samo če obstaja aktivna karta za center 1 */}
+      {activeTicket && <AiChat />}
 
-      {/* 📅 Active bookings */}
       <ActiveBookingsList
-        onBookingChange={() =>
-          setRefreshTicket(v => v + 1)
-        }
+        onBookingChange={() => setRefreshTicket(v => v + 1)}
       />
     </main>
   );
